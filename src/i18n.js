@@ -10,12 +10,12 @@ i18n
       en: {
         translation: {
           home: "Home",
-          about: "About Me",
+          about: "ABOUT ME",
           skills: "Skills",
           experience: "Experience",
           projects: "Projects",
           contact: "Contact",
-          developer: ".NET Developer",
+          developer: "Madirimov",
           cv_download: "Download CV",
           introduce: "INTRODUCE",
           welcome: "Welcome to my personal page!",
@@ -49,12 +49,12 @@ i18n
       uz: {
         translation: {
           home: "Bosh sahifa",
-          about: "Men haqimda",
+          about: "MEN HAQIMDA",
           skills: "Ko'nikmalar",
           experience: "Tajriba",
           projects: "Loyihalar",
           contact: "Aloqa",
-          developer: ".NET Dasturchi",
+          developer: "Madirimov",
           cv_download: "Rezyumeni yuklab olish",
           introduce: "TANISHUV",
           welcome: "Mening shaxsiy sahifamga xush kelibsiz!",
@@ -88,12 +88,12 @@ i18n
       ru: {
         translation: {
           home: "Главная",
-          about: "Обо мне",
+          about: "ОБО МНЕ",
           skills: "Навыки",
           experience: "Опыт",
           projects: "Проекты",
           contact: "Контакт",
-          developer: ".NET Разработчик",
+          developer: "Madirimov",
           cv_download: "Скачать резюме",
           introduce: "ПРЕДСТАВЛЯТЬ",
           welcome: "Добро пожаловать на мою персональную страницу!",

@@ -5,19 +5,19 @@
 }
 
 :root {
-  --bg: #ddd;
+  --bg: linear-gradient(135deg, #f0f0f0, #dcdcdc);
   --text: #111111;
   --primary: #007bff;
 }
 
 [data-theme='dark'] {
-  --bg: #1f1f1f;
+  --bg: linear-gradient(135deg, #2c3e50, #4b6cb7);
   --text: #f5f5f5;
   --primary: #0d6efd;
 }
 
 body {
-  background-color: var(--bg);
+  background: var(--bg);
   color: var(--text);
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -57,7 +57,8 @@ body {
 
 .logo-sub {
   font-size: 0.8rem;
-  color: var(--primary);
+  font-weight: 500;
+  color: #121213;
 }
 
 .social-links {
@@ -123,15 +124,16 @@ body {
 }
 
 .sidebar-links a {
-    font-size: 1.05rem;
-    color: var(--bg);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    width: 100%;
-    display: block;
+  will-change: transform, color;
+  font-size: 1.05rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: block;
 }
 
 .sidebar-links a:hover {
@@ -216,27 +218,27 @@ body {
 }
 
 .logo-icon {
-  font-size: 1.8rem;
-  color: var(--primary);
+  font-size: 2rem;
+  color: var(--text);
 }
 
 .logo-text {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   line-height: 1.2;
 }
 
 .logo-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--text);
 }
 
 .logo-sub {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgb(68, 63, 63);
-  color: #007bff;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text);
 }
 
 .nav-actions {

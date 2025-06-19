@@ -6,6 +6,7 @@ import {
   FaLinkedin,
   FaTelegram,
   FaInstagram,
+  FaFacebook,
   FaDownload,
   FaBars,
   FaTimes,
@@ -28,19 +29,20 @@ const Navbar = () => {
         <div className="logo">
           <div className="logo-icon-text">
             <FaCode className="logo-icon" />
-            <div className="logo-text">
+            <a href='/' className="logo-text">
               <span className="logo-name">Dilmurod</span>
               <span className="logo-sub">{t('developer')}</span>
-            </div>
+            </a>
           </div>
         </div>
 
         <div className="social-links">
           <a href="https://github.com/DilmurodDeveloper" target="_blank" rel="noreferrer"><FaGithub /></a>
-          <a href="https://linkedin.com/in/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+          <a href="https://linkedin.com/in/dilmurodmadirimov" target="_blank" rel="noreferrer"><FaLinkedin /></a>
           <a href="https://t.me/DilmurodDeveloper" target="_blank" rel="noreferrer"><FaTelegram /></a>
-          <a href="https://instagram.com/madirimov.dev" target="_blank" rel="noreferrer"><FaInstagram /></a>
-          <a href="/cv.pdf" download title={t('cv_download')}><FaDownload /></a>
+          <a href="https://instagram.com/dilmurod_developer" target="_blank" rel="noreferrer"><FaInstagram /></a>
+          <a href="https://facebook.com/dilmurod.dev" target="_blank" rel="noreferrer"><FaFacebook/></a>
+          <a href="/Resume.pdf" download title={t('cv_download')}><FaDownload /></a>
         </div>
 
         <div className="nav-actions">
@@ -81,10 +83,11 @@ const Navbar = () => {
 
         <div className="sidebar-social">
           <a href="https://github.com/DilmurodDeveloper" target="_blank" rel="noreferrer"><FaGithub /></a>
-          <a href="https://linkedin.com/in/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+          <a href="https://linkedin.com/in/dilmurodmadirimov" target="_blank" rel="noreferrer"><FaLinkedin /></a>
           <a href="https://t.me/DilmurodDeveloper" target="_blank" rel="noreferrer"><FaTelegram /></a>
-          <a href="https://instagram.com/madirimov.dev" target="_blank" rel="noreferrer"><FaInstagram /></a>
-          <a href="/cv.pdf" download title="Download CV"><FaDownload /></a>
+          <a href="https://instagram.com/dilmurod_developer" target="_blank" rel="noreferrer"><FaInstagram /></a>
+          <a href="https://facebook.com/dilmurod.dev" target="_blank" rel="noreferrer"><FaFacebook/></a>
+          <a href="/Resume.pdf" download title={t('cv_download')}><FaDownload /></a>
         </div>
 
         <div className="sidebar-footer">
