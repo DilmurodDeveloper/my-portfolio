@@ -1,4 +1,4 @@
-import '../assets/css/verticaldots.css'; 
+import '../assets/css/verticaldots.css';
 
 const VerticalDots = ({ totalPages = 6, current, onDotClick }) => {
   return (
@@ -8,7 +8,6 @@ const VerticalDots = ({ totalPages = 6, current, onDotClick }) => {
           key={idx}
           className={`dot ${current === idx ? 'active' : ''}`}
           onClick={() => onDotClick(idx)}
-          aria-label={`Go to page ${idx + 1}`}
         />
       ))}
     </div>

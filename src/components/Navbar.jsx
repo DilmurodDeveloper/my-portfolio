@@ -13,7 +13,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { FaCode } from 'react-icons/fa';
 import '../assets/css/navbar.css';
-import '../styles.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +30,7 @@ const Navbar = () => {
             <FaCode className="logo-icon" />
             <div className="logo-text">
               <span className="logo-name">Dilmurod</span>
-              <span className="logo-sub">.NET Developer</span>
+              <span className="logo-sub">{t('developer')}</span>
             </div>
           </div>
         </div>
@@ -41,7 +40,7 @@ const Navbar = () => {
           <a href="https://linkedin.com/in/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
           <a href="https://t.me/DilmurodDeveloper" target="_blank" rel="noreferrer"><FaTelegram /></a>
           <a href="https://instagram.com/madirimov.dev" target="_blank" rel="noreferrer"><FaInstagram /></a>
-          <a href="/cv.pdf" download title="Download CV"><FaDownload /></a>
+          <a href="/cv.pdf" download title={t('cv_download')}><FaDownload /></a>
         </div>
 
         <div className="nav-actions">

@@ -1,14 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar';
+import VerticalDots from './components/VerticalDots';
+import StarBackground from './components/StarBackground';
 import Home from './sections/Home';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
-import { ThemeProvider } from './contexts/ThemeContext'; 
-import './i18n'; 
-import VerticalDots from './components/VerticalDots';
+import './assets/css/scroll.css';
+import './i18n';
 
 const sections = [
   { id: 'home', component: <Home /> },
@@ -23,49 +25,54 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const sectionRefs = useRef([]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      const currentIndex = sectionRefs.current.findIndex((section) => {
-        if (!section) return false;
-        const offsetTop = section.offsetTop;
-        const offsetBottom = offsetTop + section.offsetHeight;
-        return scrollPosition >= offsetTop && scrollPosition < offsetBottom;
-      });
-
-      if (currentIndex !== -1 && currentIndex !== currentPage) {
-        setCurrentPage(currentIndex);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
-
   const handleDotClick = (index) => {
-    setCurrentPage(index);
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = sectionRefs.current.findIndex((el) => el === entry.target);
+          if (entry.isIntersecting && index !== -1) {
+            setCurrentPage(index);
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    sectionRefs.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sectionRefs.current.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
     <ThemeProvider>
-      <>
+      <div className="app-wrapper">
+        <StarBackground />
         <Navbar />
-        {sections.map(({ id, component }, index) => (
-          <div
-            key={id}
-            ref={(el) => (sectionRefs.current[index] = el)}
-            style={{ minHeight: '100vh' }}
-            id={id}
-          >
-            {component}
-          </div>
-        ))}
-
-        <VerticalDots current={currentPage} onDotClick={handleDotClick} />
-      </>
+        <main className="scroll-container">
+          {sections.map(({ id, component }, index) => (
+            <section
+              key={id}
+              id={id}
+              ref={(el) => (sectionRefs.current[index] = el)}
+              className="snap-section fade-slide"
+            >
+              {component}
+            </section>
+          ))}
+        </main>
+        <VerticalDots current={currentPage} onDotClick={handleDotClick} totalPages={sections.length} />
+      </div>
     </ThemeProvider>
   );
 };

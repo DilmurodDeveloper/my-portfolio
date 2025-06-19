@@ -1,0 +1,247 @@
+.about-section {
+  scroll-margin-top: 80px;
+  color: var(--text);
+  padding: 100px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.about-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 2;
+}
+
+.about-left {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.about-photo-info {
+    padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.about-img-rect {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid var(--primary);
+    box-shadow: 0 0 20px rgba(135, 178, 224, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.about-img-rect:hover {
+  transform: scale(1.05);
+}
+
+.about-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-size: 1rem;
+  background-color: rgba(0, 123, 255, 0.05);
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+}
+
+.about-right {
+  flex: 1 1 500px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  position: relative;
+}
+
+.about-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary);
+  margin-top: 0.4rem;
+  border-radius: 4px;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about-facts {
+  background-color: rgba(0, 123, 255, 0.05);
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+  margin: 1.2rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-radius: 6px;
+}
+
+.about-facts p {
+  margin: 0.3rem 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Dark mode yulduzlar */
+.star-canvas {
+  display: none;
+}
+
+[data-theme='dark'] .star-canvas {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .about-photo-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-img-rect {
+    width: 180px;
+    height: 240px;
+  }
+
+  .about-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-right {
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+}
+
+.about-info-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem;
+  border-left: 5px solid var(--primary);
+  background: linear-gradient(to right, var(--primary) 5px, transparent 5px) no-repeat left top;
+  background-size: 100% 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,1);
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  color: rgba(245, 215, 42, 0.813);
+  margin-top: 3px;
+  position: relative;
+}
+
+/* Tooltip */
+.tooltip::after {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.info-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.about-tags .tag {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.about-tags .tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}

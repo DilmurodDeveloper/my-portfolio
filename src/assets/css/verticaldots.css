@@ -1,7 +1,7 @@
 .vertical-dots {
   position: fixed;
   top: 50%;
-  right: 20px;
+  right: 40px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
