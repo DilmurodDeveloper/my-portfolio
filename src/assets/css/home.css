@@ -49,7 +49,7 @@
   backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
-   box-shadow:
+  box-shadow:
     0 0 10px 5px rgba(12, 112, 194, 0.7),  
     0 0 20px 10px rgba(193, 198, 202, 0.7),  
     0 0 30px 20px rgba(12, 112, 194, 0.7);

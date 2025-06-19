@@ -25,9 +25,17 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const sectionRefs = useRef([]);
 
-  const handleDotClick = (index) => {
-    sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,6 +44,7 @@ const App = () => {
           const index = sectionRefs.current.findIndex((el) => el === entry.target);
           if (entry.isIntersecting && index !== -1) {
             setCurrentPage(index);
+            window.history.replaceState(null, '', `#${sections[index].id}`);
             entry.target.classList.add('visible');
           }
         });
@@ -54,6 +63,53 @@ const App = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const lastIndex = sections.length - 1;
+
+    const handleWheel = (e) => {
+      if (currentPage === lastIndex && e.deltaY > 0) {
+        scrollToSection(0);
+      }
+    };
+
+    let startY = null;
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (startY === null) return;
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+      if (currentPage === lastIndex && deltaY < -30) {
+        scrollToSection(0);
+      }
+      startY = null;
+    };
+
+    window.addEventListener('wheel', handleWheel);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentPage]);
+
+  const scrollToSection = (index) => {
+    const section = sectionRefs.current[index];
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      window.history.replaceState(null, '', `#${sections[index].id}`);
+    }
+  };
+
+  const handleDotClick = (index) => {
+    scrollToSection(index);
+  };
+
   return (
     <ThemeProvider>
       <div className="app-wrapper">
@@ -71,7 +127,11 @@ const App = () => {
             </section>
           ))}
         </main>
-        <VerticalDots current={currentPage} onDotClick={handleDotClick} totalPages={sections.length} />
+        <VerticalDots
+          current={currentPage}
+          onDotClick={handleDotClick}
+          totalPages={sections.length}
+        />
       </div>
     </ThemeProvider>
   );
